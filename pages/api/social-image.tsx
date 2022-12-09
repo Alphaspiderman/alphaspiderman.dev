@@ -2,11 +2,11 @@ import * as React from 'react'
 import { withOGImage } from 'next-api-og-image'
 
 import {
-  getBlockTitle,
-  getBlockIcon,
-  getPageProperty,
-  isUrl,
-  parsePageId
+	getBlockTitle,
+	getBlockIcon,
+	getPageProperty,
+	isUrl,
+	parsePageId
 } from 'notion-utils'
 import { PageBlock } from 'notion-types'
 
@@ -26,129 +26,143 @@ import * as config from 'lib/config'
 const debugInspectHtml = false
 
 export default withOGImage<'query', 'id'>({
-  template: {
-    react: async ({ id }) => {
-      const pageId = parsePageId(id)
+	template: {
+		react: async ({ id }) => {
+			const pageId = parsePageId(id)
 
-      if (!pageId) {
-        throw new Error('Invalid notion page id')
-      }
+			if (!pageId) {
+				throw new Error('Invalid notion page id')
+			}
 
-      const recordMap = await notion.getPage(pageId)
+			const recordMap = await notion.getPage(pageId)
 
-      const keys = Object.keys(recordMap?.block || {})
-      const block = recordMap?.block?.[keys[0]]?.value
+			const keys = Object.keys(recordMap?.block || {})
+			const block = recordMap?.block?.[keys[0]]?.value
 
-      if (!block) {
-        throw new Error('Invalid recordMap for page')
-      }
+			if (!block) {
+				throw new Error('Invalid recordMap for page')
+			}
 
-      const isBlogPost =
-        block.type === 'page' && block.parent_table === 'collection'
-      const title = getBlockTitle(block, recordMap) || config.name
-      const image = mapImageUrl(
-        getPageProperty<string>('Social Image', block, recordMap) ||
-          (block as PageBlock).format?.page_cover ||
-          config.defaultPageCover,
-        block
-      )
+			const isBlogPost =
+				block.type === 'page' && block.parent_table === 'collection'
+			const title = getBlockTitle(block, recordMap) || config.name
+			const image = mapImageUrl(
+				getPageProperty<string>('Social Image', block, recordMap) ||
+					(block as PageBlock).format?.page_cover ||
+					config.defaultPageCover,
+				block
+			)
 
-      const imageCoverPosition =
-        (block as PageBlock).format?.page_cover_position ??
-        config.defaultPageCoverPosition
-      const imageObjectPosition = imageCoverPosition
-        ? `center ${(1 - imageCoverPosition) * 100}%`
-        : null
+			const imageCoverPosition =
+				(block as PageBlock).format?.page_cover_position ??
+				config.defaultPageCoverPosition
+			const imageObjectPosition = imageCoverPosition
+				? `center ${(1 - imageCoverPosition) * 100}%`
+				: null
 
-      const blockIcon = getBlockIcon(block, recordMap)
-      const authorImage = mapImageUrl(
-        blockIcon && isUrl(blockIcon) ? blockIcon : config.defaultPageIcon,
-        block
-      )
+			const blockIcon = getBlockIcon(block, recordMap)
+			const authorImage = mapImageUrl(
+				blockIcon && isUrl(blockIcon)
+					? blockIcon
+					: config.defaultPageIcon,
+				block
+			)
 
-      const author =
-        getPageProperty<string>('Author', block, recordMap) || config.author
+			const author =
+				getPageProperty<string>('Author', block, recordMap) ||
+				config.author
 
-      // const socialDescription =
-      //   getPageProperty<string>('Description', block, recordMap) ||
-      //   config.description
+			// const socialDescription =
+			//   getPageProperty<string>('Description', block, recordMap) ||
+			//   config.description
 
-      const lastUpdatedTime = getPageProperty<number>(
-        'Last Updated',
-        block,
-        recordMap
-      )
-      const publishedTime = getPageProperty<number>(
-        'Published',
-        block,
-        recordMap
-      )
-      const dateUpdated = lastUpdatedTime
-        ? new Date(lastUpdatedTime)
-        : publishedTime
-        ? new Date(publishedTime)
-        : undefined
-      const date =
-        isBlogPost && dateUpdated
-          ? `${dateUpdated.toLocaleString('en-US', {
-              month: 'long'
-            })} ${dateUpdated.getFullYear()}`
-          : undefined
-      const detail = date || config.domain
+			const lastUpdatedTime = getPageProperty<number>(
+				'Last Updated',
+				block,
+				recordMap
+			)
+			const publishedTime = getPageProperty<number>(
+				'Published',
+				block,
+				recordMap
+			)
+			const dateUpdated = lastUpdatedTime
+				? new Date(lastUpdatedTime)
+				: publishedTime
+				? new Date(publishedTime)
+				: undefined
+			const date =
+				isBlogPost && dateUpdated
+					? `${dateUpdated.toLocaleString('en-US', {
+							month: 'long'
+					  })} ${dateUpdated.getFullYear()}`
+					: undefined
+			const detail = date || config.domain
 
-      return (
-        <html>
-          <head>
-            <style dangerouslySetInnerHTML={{ __html: style }} />
-          </head>
+			return (
+				<html>
+					<head>
+						<style dangerouslySetInnerHTML={{ __html: style }} />
+					</head>
 
-          <body>
-            <div className='container'>
-              <div className='horiz'>
-                <div className='lhs'>
-                  <div className='main'>
-                    <h1 className='title'>{title}</h1>
-                  </div>
+					<body>
+						<div className='container'>
+							<div className='horiz'>
+								<div className='lhs'>
+									<div className='main'>
+										<h1 className='title'>{title}</h1>
+									</div>
 
-                  <div className='metadata'>
-                    {authorImage && (
-                      <div
-                        className='author-image'
-                        style={{ backgroundImage: `url(${authorImage})` }}
-                      />
-                    )}
+									<div className='metadata'>
+										{authorImage && (
+											<div
+												className='author-image'
+												style={{
+													backgroundImage: `url(${authorImage})`
+												}}
+											/>
+										)}
 
-                    {(author || detail) && (
-                      <div className='metadata-rhs'>
-                        {author && <div className='author'>{author}</div>}
-                        {detail && <div className='detail'>{detail}</div>}
-                      </div>
-                    )}
-                  </div>
-                </div>
+										{(author || detail) && (
+											<div className='metadata-rhs'>
+												{author && (
+													<div className='author'>
+														{author}
+													</div>
+												)}
+												{detail && (
+													<div className='detail'>
+														{detail}
+													</div>
+												)}
+											</div>
+										)}
+									</div>
+								</div>
 
-                {image && (
-                  <img
-                    src={image}
-                    className='rhs'
-                    style={{
-                      objectPosition: imageObjectPosition || undefined
-                    }}
-                  />
-                )}
-              </div>
-            </div>
-          </body>
-        </html>
-      )
-    }
-  },
-  cacheControl: 'max-age=0, s-maxage=86400, stale-while-revalidate=3600',
-  type: 'jpeg',
-  quality: 75,
-  dev: {
-    inspectHtml: debugInspectHtml
-  }
+								{image && (
+									<img
+										src={image}
+										className='rhs'
+										style={{
+											objectPosition:
+												imageObjectPosition || undefined
+										}}
+									/>
+								)}
+							</div>
+						</div>
+					</body>
+				</html>
+			)
+		}
+	},
+	cacheControl: 'max-age=0, s-maxage=86400, stale-while-revalidate=3600',
+	type: 'jpeg',
+	quality: 75,
+	dev: {
+		inspectHtml: debugInspectHtml
+	}
 })
 
 const style = `

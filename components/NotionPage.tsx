@@ -15,10 +15,10 @@ import { NotionRenderer } from 'react-notion-x'
 
 // utils
 import {
-  getBlockTitle,
-  getPageProperty,
-  formatDate,
-  normalizeTitle
+	getBlockTitle,
+	getPageProperty,
+	formatDate,
+	normalizeTitle
 } from 'notion-utils'
 import { mapPageUrl, getCanonicalPageUrl } from 'lib/map-page-url'
 import { mapImageUrl } from 'lib/map-image-url'
@@ -41,254 +41,255 @@ import styles from './styles.module.css'
 // -----------------------------------------------------------------------------
 
 const Code = dynamic(() =>
-  import('react-notion-x/build/third-party/code').then(async (m) => {
-    // add / remove any prism syntaxes here
-    await Promise.all([
-      import('prismjs/components/prism-markup-templating.js'),
-      import('prismjs/components/prism-markup.js'),
-      import('prismjs/components/prism-bash.js'),
-      import('prismjs/components/prism-c.js'),
-      import('prismjs/components/prism-cpp.js'),
-      import('prismjs/components/prism-csharp.js'),
-      import('prismjs/components/prism-java.js'),
-      import('prismjs/components/prism-js-templates.js'),
-      import('prismjs/components/prism-git.js'),
-      import('prismjs/components/prism-go.js'),
-      import('prismjs/components/prism-graphql.js'),
-      import('prismjs/components/prism-makefile.js'),
-      import('prismjs/components/prism-markdown.js'),
-      import('prismjs/components/prism-python.js'),
-      import('prismjs/components/prism-reason.js'),
-      import('prismjs/components/prism-rust.js'),
-      import('prismjs/components/prism-sass.js'),
-      import('prismjs/components/prism-scss.js'),
-      import('prismjs/components/prism-solidity.js'),
-      import('prismjs/components/prism-stylus.js'),
-      import('prismjs/components/prism-swift.js'),
-      import('prismjs/components/prism-yaml.js')
-    ])
-    return m.Code
-  })
+	import('react-notion-x/build/third-party/code').then(async (m) => {
+		// add / remove any prism syntaxes here
+		await Promise.all([
+			import('prismjs/components/prism-markup-templating.js'),
+			import('prismjs/components/prism-markup.js'),
+			import('prismjs/components/prism-bash.js'),
+			import('prismjs/components/prism-c.js'),
+			import('prismjs/components/prism-cpp.js'),
+			import('prismjs/components/prism-csharp.js'),
+			import('prismjs/components/prism-java.js'),
+			import('prismjs/components/prism-js-templates.js'),
+			import('prismjs/components/prism-git.js'),
+			import('prismjs/components/prism-go.js'),
+			import('prismjs/components/prism-graphql.js'),
+			import('prismjs/components/prism-makefile.js'),
+			import('prismjs/components/prism-markdown.js'),
+			import('prismjs/components/prism-python.js'),
+			import('prismjs/components/prism-reason.js'),
+			import('prismjs/components/prism-rust.js'),
+			import('prismjs/components/prism-sass.js'),
+			import('prismjs/components/prism-scss.js'),
+			import('prismjs/components/prism-solidity.js'),
+			import('prismjs/components/prism-stylus.js'),
+			import('prismjs/components/prism-swift.js'),
+			import('prismjs/components/prism-yaml.js')
+		])
+		return m.Code
+	})
 )
 const Equation = dynamic(() =>
-  import('react-notion-x/build/third-party/equation').then((m) => m.Equation)
+	import('react-notion-x/build/third-party/equation').then((m) => m.Equation)
 )
 const Collection = dynamic(() =>
-  import('react-notion-x/build/third-party/collection').then(
-    (m) => m.Collection
-  )
+	import('react-notion-x/build/third-party/collection').then(
+		(m) => m.Collection
+	)
 )
 const Modal = dynamic(
-  () =>
-    import('react-notion-x/build/third-party/modal').then((m) => {
-      m.Modal.setAppElement('.notion-viewport')
-      return m.Modal
-    }),
-  {
-    ssr: false
-  }
+	() =>
+		import('react-notion-x/build/third-party/modal').then((m) => {
+			m.Modal.setAppElement('.notion-viewport')
+			return m.Modal
+		}),
+	{
+		ssr: false
+	}
 )
 
 const Tweet = ({ id }: { id: string }) => {
-  return <TweetEmbed tweetId={id} />
+	return <TweetEmbed tweetId={id} />
 }
 
 const propertyLastEditedTimeValue = (
-  { block, pageHeader },
-  defaultFn: () => React.ReactNode
+	{ block, pageHeader },
+	defaultFn: () => React.ReactNode
 ) => {
-  if (pageHeader && block?.last_edited_time) {
-    return `Last updated ${formatDate(block?.last_edited_time, {
-      month: 'long'
-    })}`
-  }
+	if (pageHeader && block?.last_edited_time) {
+		return `Last updated ${formatDate(block?.last_edited_time, {
+			month: 'long'
+		})}`
+	}
 
-  return defaultFn()
+	return defaultFn()
 }
 
 const propertyDateValue = (
-  { data, schema, pageHeader },
-  defaultFn: () => React.ReactNode
+	{ data, schema, pageHeader },
+	defaultFn: () => React.ReactNode
 ) => {
-  if (pageHeader && schema?.name?.toLowerCase() === 'published') {
-    const publishDate = data?.[0]?.[1]?.[0]?.[1]?.start_date
+	if (pageHeader && schema?.name?.toLowerCase() === 'published') {
+		const publishDate = data?.[0]?.[1]?.[0]?.[1]?.start_date
 
-    if (publishDate) {
-      return `Published ${formatDate(publishDate, {
-        month: 'long'
-      })}`
-    }
-  }
+		if (publishDate) {
+			return `Published ${formatDate(publishDate, {
+				month: 'long'
+			})}`
+		}
+	}
 
-  return defaultFn()
+	return defaultFn()
 }
 
 const propertyTextValue = (
-  { schema, pageHeader },
-  defaultFn: () => React.ReactNode
+	{ schema, pageHeader },
+	defaultFn: () => React.ReactNode
 ) => {
-  if (pageHeader && schema?.name?.toLowerCase() === 'author') {
-    return <b>{defaultFn()}</b>
-  }
+	if (pageHeader && schema?.name?.toLowerCase() === 'author') {
+		return <b>{defaultFn()}</b>
+	}
 
-  return defaultFn()
+	return defaultFn()
 }
 
 const propertySelectValue = (
-  { schema, value, key, pageHeader },
-  defaultFn: () => React.ReactNode
+	{ schema, value, key, pageHeader },
+	defaultFn: () => React.ReactNode
 ) => {
-  value = normalizeTitle(value)
+	value = normalizeTitle(value)
 
-  if (pageHeader && schema.type === 'multi_select' && value) {
-    return (
-      <Link href={`/tags/${value}`} key={key}>
-        <a>{defaultFn()}</a>
-      </Link>
-    )
-  }
+	if (pageHeader && schema.type === 'multi_select' && value) {
+		return (
+			<Link href={`/tags/${value}`} key={key}>
+				<a>{defaultFn()}</a>
+			</Link>
+		)
+	}
 
-  return defaultFn()
+	return defaultFn()
 }
 
 export const NotionPage: React.FC<types.PageProps> = ({
-  site,
-  recordMap,
-  error,
-  pageId,
-  tagsPage,
-  propertyToFilterName
+	site,
+	recordMap,
+	error,
+	pageId,
+	tagsPage,
+	propertyToFilterName
 }) => {
-  const router = useRouter()
-  const lite = useSearchParam('lite')
+	const router = useRouter()
+	const lite = useSearchParam('lite')
 
-  const components = React.useMemo(
-    () => ({
-      nextImage: Image,
-      nextLink: Link,
-      Code,
-      Collection,
-      Equation,
-      Modal,
-      Tweet,
-      Header: NotionPageHeader,
-      propertyLastEditedTimeValue,
-      propertyTextValue,
-      propertyDateValue,
-      propertySelectValue
-    }),
-    []
-  )
+	const components = React.useMemo(
+		() => ({
+			nextImage: Image,
+			nextLink: Link,
+			Code,
+			Collection,
+			Equation,
+			Modal,
+			Tweet,
+			Header: NotionPageHeader,
+			propertyLastEditedTimeValue,
+			propertyTextValue,
+			propertyDateValue,
+			propertySelectValue
+		}),
+		[]
+	)
 
-  // lite mode is for oembed
-  const isLiteMode = lite === 'true'
+	// lite mode is for oembed
+	const isLiteMode = lite === 'true'
 
-  const { isDarkMode } = useDarkMode()
+	const { isDarkMode } = useDarkMode()
 
-  const siteMapPageUrl = React.useMemo(() => {
-    const params: any = {}
-    if (lite) params.lite = lite
+	const siteMapPageUrl = React.useMemo(() => {
+		const params: any = {}
+		if (lite) params.lite = lite
 
-    const searchParams = new URLSearchParams(params)
-    return mapPageUrl(site, recordMap, searchParams)
-  }, [site, recordMap, lite])
+		const searchParams = new URLSearchParams(params)
+		return mapPageUrl(site, recordMap, searchParams)
+	}, [site, recordMap, lite])
 
-  const keys = Object.keys(recordMap?.block || {})
-  const block = recordMap?.block?.[keys[0]]?.value
+	const keys = Object.keys(recordMap?.block || {})
+	const block = recordMap?.block?.[keys[0]]?.value
 
-  // const isRootPage =
-  //   parsePageId(block?.id) === parsePageId(site?.rootNotionPageId)
-  const isBlogPost =
-    block?.type === 'page' && block?.parent_table === 'collection'
+	// const isRootPage =
+	//   parsePageId(block?.id) === parsePageId(site?.rootNotionPageId)
+	const isBlogPost =
+		block?.type === 'page' && block?.parent_table === 'collection'
 
-  const showTableOfContents = !!isBlogPost
-  const minTableOfContentsItems = 3
+	const showTableOfContents = !!isBlogPost
+	const minTableOfContentsItems = 3
 
-  const footer = React.useMemo(() => <Footer />, [])
+	const footer = React.useMemo(() => <Footer />, [])
 
-  if (router.isFallback) {
-    return <Loading />
-  }
+	if (router.isFallback) {
+		return <Loading />
+	}
 
-  if (error || !site || !block) {
-    return <Page404 site={site} pageId={pageId} error={error} />
-  }
+	if (error || !site || !block) {
+		return <Page404 site={site} pageId={pageId} error={error} />
+	}
 
-  const name = getBlockTitle(block, recordMap) || site.name
-  const title =
-    tagsPage && propertyToFilterName ? `${propertyToFilterName} ${name}` : name
+	const name = getBlockTitle(block, recordMap) || site.name
+	const title =
+		tagsPage && propertyToFilterName
+			? `${propertyToFilterName} ${name}`
+			: name
 
-  console.log('notion page', {
-    isDev: config.isDev,
-    title,
-    pageId,
-    rootNotionPageId: site.rootNotionPageId,
-    recordMap
-  })
+	console.log('notion page', {
+		isDev: config.isDev,
+		title,
+		pageId,
+		rootNotionPageId: site.rootNotionPageId,
+		recordMap
+	})
 
-  if (!config.isServer) {
-    // add important objects to the window global for easy debugging
-    const g = window as any
-    g.pageId = pageId
-    g.recordMap = recordMap
-    g.block = block
-  }
+	if (!config.isServer) {
+		// add important objects to the window global for easy debugging
+		const g = window as any
+		g.pageId = pageId
+		g.recordMap = recordMap
+		g.block = block
+	}
 
-  const canonicalPageUrl =
-    !config.isDev && getCanonicalPageUrl(site, recordMap)(pageId)
+	const canonicalPageUrl =
+		!config.isDev && getCanonicalPageUrl(site, recordMap)(pageId)
 
-  const socialImage = mapImageUrl(
-    getPageProperty<string>('Social Image', block, recordMap) ||
-      (block as PageBlock).format?.page_cover ||
-      config.defaultPageCover,
-    block
-  )
+	const socialImage = mapImageUrl(
+		getPageProperty<string>('Social Image', block, recordMap) ||
+			(block as PageBlock).format?.page_cover ||
+			config.defaultPageCover,
+		block
+	)
 
-  const socialDescription =
-    getPageProperty<string>('Description', block, recordMap) ||
-    config.description
+	const socialDescription =
+		getPageProperty<string>('Description', block, recordMap) ||
+		config.description
 
-  return (
-    <>
-      <PageHead
-        pageId={pageId}
-        site={site}
-        title={title}
-        description={socialDescription}
-        image={socialImage}
-        url={canonicalPageUrl}
-      />
+	return (
+		<>
+			<PageHead
+				pageId={pageId}
+				site={site}
+				title={title}
+				description={socialDescription}
+				image={socialImage}
+				url={canonicalPageUrl}
+			/>
 
-      {isLiteMode && <BodyClassName className='notion-lite' />}
-      {isDarkMode && <BodyClassName className='dark-mode' />}
+			{isLiteMode && <BodyClassName className='notion-lite' />}
+			{isDarkMode && <BodyClassName className='dark-mode' />}
 
-      <NotionRenderer
-        bodyClassName={cs(
-          styles.notion,
-          pageId === site.rootNotionPageId && 'index-page',
-          tagsPage && 'tags-page'
-        )}
-        darkMode={isDarkMode}
-        components={components}
-        recordMap={recordMap}
-        rootPageId={site.rootNotionPageId}
-        rootDomain={site.domain}
-        fullPage={!isLiteMode}
-        previewImages={!!recordMap.preview_images}
-        showCollectionViewDropdown={false}
-        showTableOfContents={showTableOfContents}
-        minTableOfContentsItems={minTableOfContentsItems}
-        defaultPageIcon={config.defaultPageIcon}
-        defaultPageCover={config.defaultPageCover}
-        defaultPageCoverPosition={config.defaultPageCoverPosition}
-        linkTableTitleProperties={false}
-        mapPageUrl={siteMapPageUrl}
-        mapImageUrl={mapImageUrl}
-        searchNotion={config.isSearchEnabled ? searchNotion : null}
-        footer={footer}
-        pageTitle={tagsPage && propertyToFilterName ? title : undefined}
-      />
-
-    </>
-  )
+			<NotionRenderer
+				bodyClassName={cs(
+					styles.notion,
+					pageId === site.rootNotionPageId && 'index-page',
+					tagsPage && 'tags-page'
+				)}
+				darkMode={isDarkMode}
+				components={components}
+				recordMap={recordMap}
+				rootPageId={site.rootNotionPageId}
+				rootDomain={site.domain}
+				fullPage={!isLiteMode}
+				previewImages={!!recordMap.preview_images}
+				showCollectionViewDropdown={false}
+				showTableOfContents={showTableOfContents}
+				minTableOfContentsItems={minTableOfContentsItems}
+				defaultPageIcon={config.defaultPageIcon}
+				defaultPageCover={config.defaultPageCover}
+				defaultPageCoverPosition={config.defaultPageCoverPosition}
+				linkTableTitleProperties={false}
+				mapPageUrl={siteMapPageUrl}
+				mapImageUrl={mapImageUrl}
+				searchNotion={config.isSearchEnabled ? searchNotion : null}
+				footer={footer}
+				pageTitle={tagsPage && propertyToFilterName ? title : undefined}
+			/>
+		</>
+	)
 }
