@@ -1,5 +1,4 @@
 import { ExtendedRecordMap, PageMap } from 'notion-types'
-import { ParsedUrlQuery } from 'querystring'
 
 export * from 'notion-types'
 
@@ -15,10 +14,8 @@ export interface PageProps {
   recordMap?: ExtendedRecordMap
   pageId?: string
   error?: PageError
-}
-
-export interface Params extends ParsedUrlQuery {
-  pageId: string
+  tagsPage?: boolean
+  propertyToFilterName?: string | string
 }
 
 export interface Site {
@@ -59,14 +56,4 @@ export interface PageUrlOverridesInverseMap {
   // maps from a notion page id to the URL path the page should be resolved to
   // (this overrides the built-in URL path generation for these pages)
   [pageId: string]: string
-}
-
-export interface NotionPageInfo {
-  pageId: string
-  title: string
-  image: string
-  imageObjectPosition: string
-  author: string
-  authorImage: string
-  detail: string
 }

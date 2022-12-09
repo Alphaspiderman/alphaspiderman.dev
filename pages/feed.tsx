@@ -1,18 +1,16 @@
+import RSS from 'rss'
 import type { GetServerSideProps } from 'next'
-
-import { ExtendedRecordMap } from 'notion-types'
 import {
   getBlockParentPage,
   getBlockTitle,
   getPageProperty,
   idToUuid
 } from 'notion-utils'
-import RSS from 'rss'
+import { ExtendedRecordMap } from 'notion-types'
 
-import * as config from '@/lib/config'
-import { getSiteMap } from '@/lib/get-site-map'
-import { getSocialImageUrl } from '@/lib/get-social-image-url'
-import { getCanonicalPageUrl } from '@/lib/map-page-url'
+import * as config from 'lib/config'
+import { getSiteMap } from 'lib/get-site-map'
+import { getCanonicalPageUrl } from 'lib/map-page-url'
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   if (req.method !== 'GET') {
@@ -69,19 +67,12 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
       : publishedTime
       ? new Date(publishedTime)
       : undefined
-    const socialImageUrl = getSocialImageUrl(pageId)
 
     feed.item({
       title,
       url,
       date,
-      description,
-      enclosure: socialImageUrl
-        ? {
-            url: socialImageUrl,
-            type: 'image/jpeg'
-          }
-        : undefined
+      description
     })
   }
 
