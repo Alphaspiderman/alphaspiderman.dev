@@ -116,30 +116,39 @@ export const getStaticProps = async (context) => {
 
 export async function getStaticPaths() {
 	if (!isDev) {
-		const props = await resolveNotionPage(domain, rootNotionPageId)
+		try {
+			const props = await resolveNotionPage(domain, rootNotionPageId)
 
-		if ((props as any).recordMap) {
-			const recordMap = (props as any).recordMap as ExtendedRecordMap
-			const collection = Object.values(recordMap.collection)[0]?.value
+			if ((props as any).recordMap) {
+				const recordMap = (props as any).recordMap as ExtendedRecordMap
+				const collection = Object.values(recordMap.collection)[0]?.value
 
-			if (collection) {
-				const propertyToFilterSchema = Object.entries(
-					collection.schema
-				).find(
-					(property) =>
-						property[1]?.name?.toLowerCase() ===
-						tagsPropertyNameLowerCase
-				)?.[1]
+				if (collection) {
+					console.log()
+					const propertyToFilterSchema = Object.entries(
+						collection.schema
+					).find(
+						(property) =>
+							property[1]?.name?.toLowerCase() ===
+							tagsPropertyNameLowerCase
+					)?.[1]
 
-				const paths = propertyToFilterSchema.options
-					.map((option) => normalizeTitle(option.value))
-					.filter(Boolean)
-					.map((slug) => `/tags/${slug}`)
+					const paths = propertyToFilterSchema.options
+						.map((option) => normalizeTitle(option.value))
+						.filter(Boolean)
+						.map((slug) => `/tags/${slug}`)
 
-				return {
-					paths,
-					fallback: true
+					return {
+						paths,
+						fallback: true
+					}
 				}
+			}
+		} catch (err) {
+			console.log(' !!!! Error above page !!!!')
+			return {
+				paths: [],
+				fallback: true
 			}
 		}
 	}
