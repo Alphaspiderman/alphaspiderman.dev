@@ -18,6 +18,6 @@ module.exports = withOptimizedImages({
 		dangerouslyAllowSVG: true,
 		contentSecurityPolicy:
 			"default-src 'self'; script-src 'none'; sandbox;",
-		optimizeImagesInDev: true
+		unoptimized: true
 	}
 })
