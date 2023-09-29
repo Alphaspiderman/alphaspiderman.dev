@@ -7,6 +7,8 @@ import { NotionPage } from 'components'
 export const getStaticProps = async (context) => {
 	const rawPageId = context.params.pageId as string
 
+	await new Promise(r => setTimeout(r, 2000));
+
 	try {
 		const props = await resolveNotionPage(domain, rawPageId)
 
@@ -40,7 +42,7 @@ export async function getStaticPaths() {
 		fallback: true
 	}
 
-	console.log(staticPaths.paths)
+	// console.log(staticPaths.paths)
 	return staticPaths
 }
 
