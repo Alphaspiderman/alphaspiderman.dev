@@ -2,19 +2,19 @@ import { siteConfig } from './lib/site-config'
 
 export default siteConfig({
 	// the site's root Notion page (required)
-	rootNotionPageId: '8303c68ae96f428f8e66c486706a78e9',
+	rootNotionPageId: '88f87f6af58e4f86a9860e7a623de694',
 
 	// if you want to restrict pages to a single notion workspace (optional)
 	// (this should be a Notion ID; see the docs for how to extract this)
 	rootNotionSpaceId: null,
 
 	// basic site info (required)
-	name: 'Home - Alphaspiderman',
-	domain: 'alphaspiderman.dev',
+	name: 'Just some Notes',
+	domain: 'notes.alphaspiderman.dev',
 	author: 'Alphaspiderman',
 
 	// open graph metadata (optional)
-	description: '',
+	description: 'Most of my Notes',
 
 	// social usernames (optional)
 	twitter: '_Alphaspiderman',
@@ -47,8 +47,8 @@ export default siteConfig({
 	//   '/bar': '0be6efce9daf42688f65c76b89f8eb27'
 	// }
 	pageUrlOverrides: {
-		'/about': '6923667bf68c48cfaf7ee5affbc2f162',
-		'/contact': 'ff7a1c669ee04178a3b913e5e113d114'
+		'/about': '100ec857155347049feef001b0cfc53b',
+		'/contact': '9355ae735b9d46d9a481e32e409305f1'
 	},
 
 	// whether to use the default notion navigation style or a custom one with links to
@@ -57,11 +57,11 @@ export default siteConfig({
 	navigationLinks: [
 		{
 			title: 'About',
-			pageId: '6923667bf68c48cfaf7ee5affbc2f162'
+			pageId: '100ec857155347049feef001b0cfc53b'
 		},
 		{
 			title: 'Contact',
-			pageId: 'ff7a1c669ee04178a3b913e5e113d114'
+			pageId: '9355ae735b9d46d9a481e32e409305f1'
 		}
 	]
 })
