@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <Layout>
@@ -42,14 +43,5 @@ import Layout from '../layouts/Layout.astro';
       <p>I have a short linking domain powered via <a href="https://shlink.io/">shlink</a> hosted on my server. Though there is not exactly a public facing interface to add URLs on my Domain, I can via the API or via the WebClient add short URLs to my domain.</p>
     </section>
   </main>
-  <footer>
-    <nav>
-      <a href="/about">👋 About</a> | <a href="/contact">✉️ Contact</a>
-    </nav>
-    <p>Copyright 2022-23 © Alphaspiderman</p>
-    <nav>
-      <a href="https://twitter.com/_Alphaspiderman">Twitter @_Alphaspiderman</a> |
-      <a href="https://github.com/Alphaspiderman">GitHub @Alphaspiderman</a> |
-    </nav>
-  </footer>
+  <Footer />
 </Layout>
