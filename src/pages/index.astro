@@ -1,47 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import Skills from '../components/Skills.astro';
+import Experience from '../components/Experience.astro';
 ---
 
 <Layout>
-  <main>
-    <h1>Alphaspiderman</h1>
-    <section>
-      <h2>Hello There</h2>
-      <p>Hi there, I am glad you have managed to find my site in the vast internet. This just serves as a page for me to host some information about me (and to use the root domain so Google will stop flagging my entire domain setup). I have included things I use and have worked with on here making this a mini portfolio of sorts.</p>
-    </section>
-    <section>
-      <h2>Languages (Programming and others)</h2>
-      <ul>
-        <li><strong>Python</strong>: This is my main working language which I am most proficient with.</li>
-        <li><strong>C</strong>: Done for college, can work with pointers and functions, nothing too major. Am working on Data Structures and Dynamic Memory allocation as of now.</li>
-        <li><strong>Java</strong>: Doing the basics, lets see how far we are going in this, probably going to try to make a basic API in java for no real reason.</li>
-        <li><strong>HTML + CSS</strong>: Had done basics in middle school, but one should know how to work with HTML and CSS to make basic pages. I hope to get back into learning and using this soon.</li>
-        <li><strong>JavaScript</strong>: This is something I aim to learn, though I believe I can do the very basics, but can easily read basic code and understand its function. Sadly a better understanding is required to be able to say I know the language.</li>
-        <li><strong>Flutter</strong>: Have tried using for making my own Android app, have not gotten very far but it is interesting.</li>
-      </ul>
-    </section>
-    <section>
-      <h2>Application Rehosted</h2>
-      <h3>SSO Provider</h3>
-      <p>I use Authentik as a general SSO provider as well as a dashboard to manage users which access to the different thing I host. It also acts as a forward auth provider for the reverse proxy where it requires authentication before the connection is allowed. Though it has not been fully integrated in the system of things I use, work is in progress to let it be a one stop shop for all authentication.</p>
-      <h3>Password Manager</h3>
-      <p>The Password Manager is available at <a href="https://vault.alphaspiderman.dev/#/login">https://vault.alphaspiderman.dev/#/login</a>. It is powered by Vaultwarden (a Community developed version of the Bitwarden Server Software) which is fully compatible with the official Bitwarden frontend applications. This instance is hosted with Signups disabled, it is intended for Personal use by Family and Friends.</p>
-      <h3>Personal Cloud</h3>
-      <p>The Personal Cloud is available at <a href="https://cloud.alphaspiderman.dev/">https://cloud.alphaspiderman.dev/</a>. It is powered by NextCloud (a suite of client-server software for creating and using file hosting services). This instance is hosted with Signups disabled, it is intended for Backups and sharing backups.</p>
-      <h3>Reverse Proxy</h3>
-      <p>My Reverse Proxy of choice is Traefik (it was Caddy, I have now switched). Caddy is a powerful, enterprise-ready, open source web server with automatic HTTPS written in Go. It was mostly controlled via a single config file called a Caddyfile. Traefik on the other hand is a modern reverse proxy and load balancer that makes deploying microservices easy. It supports HTTP/HTTPs, TCP and UDP routing and usage of plugins, wide variety of highly customisable rules that can be hot reloaded via various config files, though some base settings can not be modified this way. Though, Traefik is now running, I am now to change how my instances are setup to optimise usage of resources as well as only have one public reverse proxy IP and rest connected via internal networks.</p>
-      <h3>Databases</h3>
-      <p>My main DBMS of choice is MySQL due to it being introduced to me first. But I have indirectly used multiple other systems as well. Some which I have used are:</p>
-      <ul>
-        <li>PostgreSQL - Used by Authnetik (SSO and LADP provider)</li>
-        <li>MongoDB - Used by private projects</li>
-        <li>Redis - Used by the sites and other private projects</li>
-      </ul>
-      <p>I am planning to move to PostgreSQL from MySQL in personal projects due to apparently it being lighter and faster and offering more features.</p>
-      <h3>Short Linking Service</h3>
-      <p>I have a short linking domain powered via <a href="https://shlink.io/">shlink</a> hosted on my server. Though there is not exactly a public facing interface to add URLs on my Domain, I can via the API or via the WebClient add short URLs to my domain.</p>
-    </section>
+  <main class="flex-1">
+    <Hero />
+    <Skills />
+    <Experience />
   </main>
   <Footer />
 </Layout>

@@ -1,0 +1,29 @@
+---
+const experience = [
+  {
+    role: "ROLE NAME",
+    years: "TIME PERIOD",
+    company: "COMPANY NAME",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  },
+];
+---
+
+<section class="max-w-3xl mx-auto mb-12">
+  <h2 class="text-2xl font-semibold mb-6 text-gray-800">Experience</h2>
+  <div class="space-y-8">
+    {
+      experience.map((job) => (
+        <div class="bg-white rounded-lg shadow p-6">
+          <div class="flex justify-between items-center mb-2">
+            <h3 class="text-lg font-bold text-blue-700">{job.role}</h3>
+            <span class="text-gray-500 text-sm">{job.years}</span>
+          </div>
+          <div class="text-gray-600 font-medium mb-1">{job.company}</div>
+          <p class="text-gray-700">{job.description}</p>
+        </div>
+      ))
+    }
+  </div>
+</section>

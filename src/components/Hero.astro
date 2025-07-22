@@ -1,0 +1,31 @@
+---
+const profile = {
+  name: 'Alphaspiderman',
+  role: 'Developer & SysAdmin',
+  bio: 'Building, hosting, and securing web applications. Passionate about automation, open source, and learning new tech.',
+  email: '...',
+  location: 'Internet',
+  socials: [
+    { name: 'GitHub', url: 'https://github.com/Alphaspiderman' },
+    { name: 'LinkedIn', url: 'https://twitter.com/_Alphaspiderman' },
+    
+  ],
+  image: '/assets/profile-picture.png',
+};
+---
+<div class="flex flex-col items-center py-12">
+  <img src={profile.image} alt="Profile" class="w-32 h-32 rounded-full mb-6 shadow-lg object-cover" />
+  <h1 class="text-4xl font-bold mb-2">{profile.name}</h1>
+  <h2 class="text-xl text-gray-600 mb-4">{profile.role}</h2>
+  <p class="text-center max-w-xl mb-6 text-gray-700">{profile.bio}</p>
+  <div class="flex gap-6 mb-8">
+    <a href={`mailto:${profile.email}`} class="text-blue-600 hover:underline">{profile.email}</a>
+    <span class="text-gray-400">|</span>
+    <span class="text-gray-600">{profile.location}</span>
+  </div>
+  <div class="flex gap-4 mb-10">
+    {profile.socials.map(social => (
+      <a href={social.url} class="text-gray-500 hover:text-blue-600 text-lg font-medium" target="_blank" rel="noopener">{social.name}</a>
+    ))}
+  </div>
+</div>
