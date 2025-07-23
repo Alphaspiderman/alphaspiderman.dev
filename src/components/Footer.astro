@@ -2,13 +2,31 @@
 const today = new Date();
 ---
 
-<footer>
-  <nav>
-    <a href="/about">👋 About</a> | <a href="/contact">✉️ Contact</a>
-  </nav>
-  <p>Copyright &copy; {today.getFullYear()} Alphaspiderman</p>
-  <nav>
-    <a href="https://twitter.com/_Alphaspiderman">Twitter @_Alphaspiderman</a> |
-    <a href="https://github.com/Alphaspiderman">GitHub @Alphaspiderman</a> |
-  </nav>
+<footer
+  class="w-full bg-gray-900 text-gray-100 py-8 mt-12 border-t border-gray-800"
+>
+  <div class="max-w-3xl mx-auto flex flex-col items-center gap-4 px-4">
+    <nav class="flex gap-6 text-base font-medium">
+      <a href="/about" class="hover:text-blue-400 transition">👋 About</a>
+      <span class="text-gray-600">|</span>
+      <a href="/contact" class="hover:text-blue-400 transition">✉️ Contact</a>
+    </nav>
+    <div class="text-sm text-gray-400">
+      Copyright {today.getFullYear()} &copy; Alphaspiderman
+    </div>
+    <nav class="flex gap-6 text-lg">
+      <a
+        href="https://twitter.com/_Alphaspiderman"
+        class="hover:text-blue-400 transition"
+        target="_blank"
+        rel="noopener">Twitter</a
+      >
+      <a
+        href="https://github.com/Alphaspiderman"
+        class="hover:text-blue-400 transition"
+        target="_blank"
+        rel="noopener">GitHub</a
+      >
+    </nav>
+  </div>
 </footer>
