@@ -4,15 +4,19 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
+    "dev-net": "astro dev --host 0.0.0.0",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "format": "pnpn dlx prettier --check --ignore-path .gitignore .",
+    "format:fix": "pnpm dlx prettier --write --ignore-path .gitignore ."
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
     "astro": "5.12.0"
   },
   "devDependencies": {
+    "prettier-plugin-astro": "^0.14.1",
     "tailwindcss": "^4.1.11"
   }
 }

@@ -1,32 +1,52 @@
 ---
 const profile = {
-  name: 'Alphaspiderman',
-  role: 'Developer & SysAdmin',
-  bio: 'Building, hosting, and securing web applications. Passionate about automation, open source, and learning new tech.',
-  email: 'Alphaspiderman@protonmail.com',
-  location: 'Internet',
+  name: "Alphaspiderman",
+  role: "Developer & SysAdmin",
+  bio: "Building, hosting, and securing web applications. Passionate about automation, open source, and learning new tech.",
+  email: "Alphaspiderman@protonmail.com",
+  location: "Internet",
   socials: [
-    { name: 'GitHub', url: 'https://github.com/Alphaspiderman' },
-    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/raghav-gupta-ind/' },
+    { name: "GitHub", url: "https://github.com/Alphaspiderman" },
+    { name: "LinkedIn", url: "https://www.linkedin.com/in/raghav-gupta-ind/" },
   ],
-  image: '/assets/profile-picture.png',
-  bg: '/assets/bg-light.png',
+  image: "/assets/profile-picture.png",
+  bg: "/assets/bg-light.png",
 };
 ---
+
 <div class="relative flex flex-col items-center py-12 mb-12">
-  <img src={profile.bg} alt="Background" class="absolute inset-0 w-full h-full object-cover -z-10" />
-  <img src={profile.image} alt="Profile" class="w-32 h-32 rounded-full mb-6 shadow-lg object-cover" />
+  <img
+    src={profile.bg}
+    alt="Background"
+    class="absolute inset-0 w-full h-full object-cover -z-10"
+  />
+  <img
+    src={profile.image}
+    alt="Profile"
+    class="w-32 h-32 rounded-full mb-6 shadow-lg object-cover"
+  />
   <h1 class="text-4xl font-bold mb-2 z-10">{profile.name}</h1>
   <h2 class="text-xl text-gray-600 mb-4 z-10">{profile.role}</h2>
   <p class="text-center max-w-xl mb-6 text-gray-700 z-10">{profile.bio}</p>
   <div class="flex gap-6 mb-8 z-10">
-    <a href={`mailto:${profile.email}`} class="text-white hover:underline">{profile.email}</a>
+    <a href={`mailto:${profile.email}`} class="text-white hover:underline"
+      >{profile.email}</a
+    >
     <span class="text-gray-400">|</span>
     <span class="text-white">{profile.location}</span>
   </div>
   <div class="flex gap-4 mb-10 z-10">
-    {profile.socials.map(social => (
-      <a href={social.url} class="text-white hover:text-black text-lg font-medium" target="_blank" rel="noopener">{social.name}</a>
-    ))}
+    {
+      profile.socials.map((social) => (
+        <a
+          href={social.url}
+          class="text-white hover:text-black text-lg font-medium"
+          target="_blank"
+          rel="noopener"
+        >
+          {social.name}
+        </a>
+      ))
+    }
   </div>
 </div>
