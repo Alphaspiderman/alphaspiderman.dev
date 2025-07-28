@@ -1,0 +1,132 @@
+---
+const projects = [
+  {
+    name: "MAHE Open House 2025",
+    year: "2025",
+    description:
+      "Project for the MAHE Open House 2025 event, providing information and resources.",
+    links: [
+      {
+        label: "GitHub",
+        url: "https://github.com/Alphaspiderman/mahe-openhouse-2025",
+      },
+      {
+        label: "Live Site",
+        url: "https://mit-openhouse.alphaspiderman.dev/",
+      },
+    ],
+  },
+  {
+    name: "Coursera Assignment Share Link Extension",
+    year: "2025",
+    description:
+      "A browser extension to easily extract & share Coursera assignment links.",
+    links: [
+      {
+        label: "GitHub",
+        url: "https://github.com/Alphaspiderman/coursera-assignment-share-link-extension",
+      },
+      {
+        label: "Chrome Web Store",
+        url: "https://chromewebstore.google.com/detail/fedhlkjnidambfcefgagpfpjakbhgncj",
+      },
+    ],
+  },
+  {
+    name: "Accreditation and Reporting System",
+    year: "2024-25",
+    description:
+      "Portal and API for managing and exporting accreditation data for colleges.",
+    links: [
+      {
+        label: "Frontend",
+        url: "https://github.com/YCN-club/accreditation-website",
+      },
+      { label: "API", url: "https://github.com/YCN-club/accreditation-api" },
+    ],
+  },
+  {
+    name: "Laundry Tracker",
+    year: "2024",
+    description: "A simple app to track laundry status and history.",
+    links: [
+      {
+        label: "GitHub",
+        url: "https://github.com/Alphaspiderman/Laundry-Tracker",
+      },
+    ],
+  },
+  {
+    name: "NSS App",
+    year: "2023",
+    description:
+      "Platform for NSS volunteers to log hours, apply for events, and manage data. Includes mobile app, API, and static config.",
+    links: [
+      { label: "API", url: "https://github.com/YCN-club/nss-api" },
+      { label: "Mobile App", url: "https://github.com/YCN-club/nss-app" },
+      { label: "Static Config", url: "https://github.com/YCN-club/nss-config" },
+    ],
+  },
+  {
+    name: "HelpDesk System",
+    year: "2023-24",
+    description:
+      "A helpdesk portal for student support, ticketing, and knowledge base, with a backend API.",
+    links: [
+      { label: "Website", url: "https://github.com/YCN-club/helpdesk-website" },
+      { label: "API", url: "https://github.com/YCN-club/helpdesk-api" },
+    ],
+  },
+  {
+    name: "Website Templates",
+    year: "2022-23",
+    description:
+      "Website templates for student clubs and communities, supporting various tiers and Notion blog integration.",
+    links: [
+      { label: "Tier 1", url: "https://github.com/YCN-club/redirect" },
+      { label: "Tier 2", url: "https://github.com/YCN-club/linkedlist" },
+      { label: "Tier 3", url: "https://github.com/YCN-club/template" },
+    ],
+  },
+  {
+    name: "Noticeboard & Logistics",
+    year: "2022-24",
+    description:
+      "Centralized platform for college events, notices, and logistics. Includes mobile apps and backend API for students to access and register for activities.",
+    links: [
+      { label: "Mobile Apps", url: "https://github.com/YCN-club/noticeboard" },
+      { label: "API", url: "https://github.com/YCN-club/api" },
+    ],
+  },
+];
+---
+
+<section class="max-w-3xl mx-auto mb-12">
+  <h2 class="text-2xl font-semibold mb-6 text-gray-800">Projects</h2>
+  <div class="space-y-8">
+    {
+      projects.map((project) => (
+        <div class="bg-white rounded-lg shadow p-6">
+          <div class="flex justify-between items-center mb-2">
+            <h3 class="text-lg font-bold text-blue-700">{project.name}</h3>
+            <span class="text-gray-500 text-sm">{project.year}</span>
+          </div>
+          <p class="text-gray-700 mb-2">{project.description}</p>
+          <div class="flex flex-wrap gap-4 mt-2">
+            {project.links &&
+              project.links.map((link) => (
+                <a
+                  href={link.url}
+                  class="text-blue-700 hover:underline text-sm bg-blue-50 px-2 py-1 rounded"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  {link.label}
+                </a>
+              ))}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
