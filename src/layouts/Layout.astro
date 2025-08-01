@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import { ModeToggle } from "@/components/ModeToggle";
 ---
 
 <html lang="en">
@@ -12,6 +13,9 @@ import "../styles/global.css";
     <link rel="stylesheet" href="/src/styles/global.css" />
   </head>
   <body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
+    <div style="position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 50;">
+      <ModeToggle client:load />
+    </div>
     <slot />
   </body>
 </html>
