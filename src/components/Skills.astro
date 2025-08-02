@@ -16,15 +16,19 @@ const skills = [
 ---
 
 <section class="max-w-3xl mx-auto mb-12">
-  <h2 class="text-2xl font-semibold mb-6 text-gray-800">Core Skills</h2>
+  <h2 class="text-2xl font-semibold mb-6 text-gray-800 dark:text-gray-100">
+    Core Skills
+  </h2>
   <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
     {
       skills.map((skill) => (
-        <div class="bg-white rounded-lg shadow p-6">
-          <h3 class="text-lg font-bold mb-4 text-blue-700">{skill.category}</h3>
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+          <h3 class="text-lg font-bold mb-4 text-blue-700 dark:text-blue-300">
+            {skill.category}
+          </h3>
           <ul class="space-y-2">
             {skill.items.map((item) => (
-              <li class="text-gray-700">{item}</li>
+              <li class="text-gray-700 dark:text-gray-200">{item}</li>
             ))}
           </ul>
         </div>

@@ -12,7 +12,7 @@ export function ModeToggle() {
 
   useEffect(() => {
     document.documentElement.classList[theme === "dark" ? "add" : "remove"](
-      "dark"
+      "dark",
     );
   }, [theme]);
 
