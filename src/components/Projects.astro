@@ -1,10 +1,20 @@
 ---
+import {
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 const projects = [
   {
     name: "MAHE Open House 2025",
     year: "2025",
     description:
       "Project for the MAHE Open House 2025 event, providing information and resources.",
+    tech: ["Astro", "Tailwind CSS", "TypeScript"],
     links: [
       {
         label: "GitHub",
@@ -21,6 +31,7 @@ const projects = [
     year: "2025",
     description:
       "A browser extension to easily extract & share Coursera assignment links.",
+    tech: ["JavaScript", "Chrome Extension", "Manifest V3"],
     links: [
       {
         label: "GitHub",
@@ -37,6 +48,7 @@ const projects = [
     year: "2024-25",
     description:
       "Portal and API for managing and exporting accreditation data for colleges.",
+    tech: ["Next.js", "Python", "PostgreSQL"],
     links: [
       {
         label: "Frontend",
@@ -49,6 +61,7 @@ const projects = [
     name: "Laundry Tracker",
     year: "2024",
     description: "A simple app to track laundry status and history.",
+    tech: ["Flutter", "SQLite"],
     links: [
       {
         label: "GitHub",
@@ -61,6 +74,7 @@ const projects = [
     year: "2023",
     description:
       "Platform for NSS volunteers to log hours, apply for events, and manage data. Includes mobile app, API, and static config.",
+    tech: ["Flutter", "Python", "PostgreSQL", "Sanic"],
     links: [
       { label: "API", url: "https://github.com/YCN-club/nss-api" },
       { label: "Mobile App", url: "https://github.com/YCN-club/nss-app" },
@@ -72,6 +86,7 @@ const projects = [
     year: "2023-24",
     description:
       "A helpdesk portal for student support, ticketing, and knowledge base, with a backend API.",
+    tech: ["Next.js", "Python", "PostgreSQL", "MinIO (S3)"],
     links: [
       { label: "Website", url: "https://github.com/YCN-club/helpdesk-website" },
       { label: "API", url: "https://github.com/YCN-club/helpdesk-api" },
@@ -82,6 +97,7 @@ const projects = [
     year: "2022-23",
     description:
       "Website templates for student clubs and communities, supporting various tiers and Notion blog integration.",
+    tech: ["Next.js", "React", "Notion API", "Tailwind CSS"],
     links: [
       { label: "Tier 1", url: "https://github.com/YCN-club/redirect" },
       { label: "Tier 2", url: "https://github.com/YCN-club/linkedlist" },
@@ -93,6 +109,7 @@ const projects = [
     year: "2022-24",
     description:
       "Centralized platform for college events, notices, and logistics. Includes mobile apps and backend API for students to access and register for activities.",
+    tech: ["Flutter", "Python", "MongoDB", "Sanic"],
     links: [
       { label: "Mobile Apps", url: "https://github.com/YCN-club/noticeboard" },
       { label: "API", url: "https://github.com/YCN-club/api" },
@@ -108,32 +125,44 @@ const projects = [
   <div class="space-y-8">
     {
       projects.map((project) => (
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
-          <div class="flex justify-between items-center mb-2">
-            <h3 class="text-lg font-bold text-blue-700 dark:text-blue-300">
+        <Card className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+          <CardHeader className="flex justify-between items-center mb-2">
+            <CardTitle className="text-lg font-bold text-blue-700 dark:text-blue-300">
               {project.name}
-            </h3>
+            </CardTitle>
             <span class="text-gray-500 dark:text-gray-400 text-sm">
               {project.year}
             </span>
-          </div>
-          <p class="text-gray-700 dark:text-gray-200 mb-2">
-            {project.description}
-          </p>
-          <div class="flex flex-wrap gap-4 mt-2">
+          </CardHeader>
+          <CardContent>
+            <CardDescription className="text-gray-700 dark:text-gray-200 mb-2">
+              {project.description}
+            </CardDescription>
+            <div class="flex flex-wrap gap-2 mb-2">
+              {project.tech &&
+                project.tech.map((tech) => (
+                  <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-2 py-0.5 rounded text-xs font-medium">
+                    {tech}
+                  </span>
+                ))}
+            </div>
+          </CardContent>
+          <CardFooter className="flex flex-wrap gap-4 mt-2">
             {project.links &&
               project.links.map((link) => (
-                <a
-                  href={link.url}
-                  class="text-blue-700 dark:text-blue-300 hover:underline text-sm bg-blue-50 dark:bg-blue-900/40 px-2 py-1 rounded"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  {link.label}
-                </a>
+                <CardAction>
+                  <a
+                    href={link.url}
+                    class="text-blue-700 dark:text-blue-300 hover:underline text-sm bg-blue-50 dark:bg-blue-900/40 px-2 py-1 rounded"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    {link.label}
+                  </a>
+                </CardAction>
               ))}
-          </div>
-        </div>
+          </CardFooter>
+        </Card>
       ))
     }
   </div>
