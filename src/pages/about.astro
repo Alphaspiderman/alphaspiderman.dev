@@ -1,41 +1,20 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Hero from "@/components/Hero.astro";
 ---
 
 <Layout>
   <main
     class="relative flex flex-col items-center py-20 min-h-screen gap-3 transition-colors duration-300"
   >
-    <img
-      src="/assets/bg-light.png"
-      alt="Background"
-      class="absolute inset-0 w-full h-full object-cover -z-10 dark:hidden"
-    />
-    <img
-      src="/assets/bg-dark.png"
-      alt="Background Dark"
-      class="absolute inset-0 w-full h-full object-cover -z-10 hidden dark:block"
-    />
-    <img
-      src="/assets/profile-picture.png"
-      alt="Profile"
-      class="w-32 h-32 rounded-full mb-8 shadow-lg object-cover z-10 transition-colors duration-300"
-    />
-    <div
-      class="p-8 max-w-xl w-full z-10 mb-8 bg-white dark:bg-gray-900/80 dark:backdrop-blur-md transition-colors duration-300"
-    >
-      <h2
-        class="text-2xl font-bold mb-4 text-gray-800 dark:text-gray-100 transition-colors duration-300"
-      >
-        Who am I?
-      </h2>
+    <Hero>
       <p
-        class="text-gray-700 dark:text-gray-300 text-lg transition-colors duration-300"
+        class="text-center max-w-xl mb-6 text-gray-700 dark:text-gray-300 z-10"
       >
         I love working with networking, cloud infrastructure, and running
         applications for myself.
       </p>
-    </div>
+    </Hero>
     <blockquote
       class="text-xl md:text-2xl italic text-center text-gray-700 dark:text-gray-300 max-w-2xl mb-10 z-10 transition-colors duration-300"
     >

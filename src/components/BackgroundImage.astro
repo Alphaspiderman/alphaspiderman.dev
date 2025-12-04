@@ -1,0 +1,21 @@
+---
+const { bg, bgDark, alt = "Background" } = Astro.props;
+import { Image } from "astro:assets";
+---
+
+<img
+  src={bg}
+  alt={alt}
+  class="absolute inset-0 w-full h-full object-cover -z-10 dark:hidden"
+  width={1920}
+  height={1080}
+  loading="eager"
+/>
+<img
+  src={bgDark}
+  alt={alt + " Dark"}
+  class="absolute inset-0 w-full h-full object-cover -z-10 hidden dark:block"
+  width={1920}
+  height={1080}
+  loading="eager"
+/>
