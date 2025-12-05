@@ -6,11 +6,9 @@ const config = {
   bg: "/assets/bg-light.png",
   bgDark: "/assets/bg-dark.png",
 };
-import BackgroundImage from "@/components/BackgroundImage.astro";
 ---
 
-<div class="relative flex flex-col items-center py-12 mb-12">
-  <BackgroundImage bg={config.bg} bgDark={config.bgDark} />
+<div class="relative flex flex-col items-center py-12 mb-4">
   <img
     src={config.image}
     alt="Profile"

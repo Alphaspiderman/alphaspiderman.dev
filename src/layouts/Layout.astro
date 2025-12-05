@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import Footer from "@/components/Footer.astro";
 import { ModeToggle } from "@/components/ModeToggle";
+import BackgroundImage from "../components/BackgroundImage.astro";
 ---
 
 <html lang="en">
@@ -16,10 +17,17 @@ import { ModeToggle } from "@/components/ModeToggle";
   <body
     class="bg-white text-gray-900 min-h-screen flex flex-col transition-colors duration-300 dark:bg-gray-900 dark:text-gray-50"
   >
+    <div
+      style="position: fixed; inset: 0; z-index: 0; width: 100vw; height: 100vh; pointer-events: none;"
+    >
+      <BackgroundImage bg="/assets/bg-light.png" bgDark="/assets/bg-dark.png" />
+    </div>
     <div style="position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 50;">
       <ModeToggle client:load />
     </div>
-    <slot />
-    <Footer />
+    <main style="position: relative; z-index: 1;">
+      <slot />
+      <Footer />
+    </main>
   </body>
 </html>
