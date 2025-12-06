@@ -3,6 +3,12 @@ import Layout from "../layouts/Layout.astro";
 import Hero from "@/components/Hero.astro";
 import Skills from "@/components/Skills.astro";
 import Projects from "@/components/Projects.astro";
+
+const config = {
+  email: "Alphaspiderman",
+  github: "Alphaspiderman",
+  linkedin: "raghav-gupta-ind",
+};
 ---
 
 <Layout>
@@ -12,23 +18,21 @@ import Projects from "@/components/Projects.astro";
       automation, open source, and learning new tech.
     </p>
     <div class="flex gap-6 mb-8 z-10">
-      <a
-        href="mailto:Alphaspiderman@protonmail.com"
-        class="text-blue-700 dark:text-blue-300 hover:underline"
-        >Alphaspiderman@protonmail.com</a
+      <a class="text-blue-700 dark:text-blue-300 hover:underline"
+        >{`${config.email} [at] protonmail.com`}</a
       >
       <span class="text-gray-400 dark:text-gray-500">|</span>
       <span class="text-gray-900 dark:text-gray-200">Internet</span>
     </div>
     <div class="flex gap-4 mb-10 z-10">
       <a
-        href="https://github.com/Alphaspiderman"
+        href=`https://github.com/${config.github}`
         class="text-gray-900 dark:text-white hover:text-black dark:hover:text-blue-400 text-lg font-medium"
         target="_blank"
         rel="noopener">GitHub</a
       >
       <a
-        href="https://www.linkedin.com/in/raghav-gupta-ind/"
+        href=`https://www.linkedin.com/in/${config.linkedin}/`
         class="text-gray-900 dark:text-white hover:text-black dark:hover:text-blue-400 text-lg font-medium"
         target="_blank"
         rel="noopener">LinkedIn</a
