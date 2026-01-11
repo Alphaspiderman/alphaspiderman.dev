@@ -125,9 +125,9 @@ const projects = [
   <div class="space-y-8">
     {
       projects.map((project) => (
-        <Card className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+        <Card className="dark:bg-gray/10 rounded-lg p-6 bg-white/10 backdrop-blur-md border-0 shadow-lg">
           <CardHeader className="flex justify-between items-center mb-2">
-            <CardTitle className="text-lg font-bold text-blue-700 dark:text-blue-300">
+            <CardTitle className="text-lg font-bold text-blue-300">
               {project.name}
             </CardTitle>
             <span class="text-gray-500 dark:text-gray-400 text-sm">
@@ -135,7 +135,7 @@ const projects = [
             </span>
           </CardHeader>
           <CardContent>
-            <CardDescription className="text-gray-700 dark:text-gray-200 mb-2">
+            <CardDescription className="text-white mb-2">
               {project.description}
             </CardDescription>
             <div class="flex flex-wrap gap-2 mb-2">
