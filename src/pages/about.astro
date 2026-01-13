@@ -16,7 +16,7 @@ import Hero from "@/components/Hero.astro";
       </p>
     </Hero>
     <blockquote
-      class="text-xl md:text-2xl italic text-center text-gray-700 dark:text-gray-300 max-w-2xl mb-10 z-10 transition-colors duration-300"
+      class="text-xl md:text-2xl italic text-center text-gray-700 dark:text-gray-300 max-w-2xl mb-10 z-10 transition-colors duration-300 bg-white/10 backdrop-blur-md shadow-lg px-4 py-2 rounded-md"
     >
       "The Web as I envisaged it, we have not seen it yet. The future is still
       so much bigger than the past."
@@ -29,18 +29,20 @@ import Hero from "@/components/Hero.astro";
     </blockquote>
     <div class="flex flex-col items-center justify-center gap-8 z-10 w-full">
       <div
-        class="flex flex-col md:flex-row items-center justify-center gap-8 w-full"
+        class="flex flex-col md:flex-row items-center justify-center gap-8 w-[80%] max-w-4xl"
       >
         <img
-          src="https://github-readme-stats.vercel.app/api?username=Alphaspiderman&show_icons=true&theme=dark&hide_border=true&hide=stars"
+          width="46.45%"
+          src="https://stats.alphaspiderman.dev/github/stats?show_icons=true&theme=dark&hide_border=true&hide=stars"
           alt="GitHub Stats"
-          class="rounded-lg shadow-md max-w-lg w-full md:w-[32rem]"
+          class="rounded-lg shadow-md"
           loading="lazy"
         />
         <img
-          src="https://nirzak-streak-stats.vercel.app/?user=Alphaspiderman&theme=dark&hide_border=true"
+          width="52.55%"
+          src="https://stats.alphaspiderman.dev/github/streak?theme=dark&hide_border=true"
           alt="GitHub Streak Stats"
-          class="rounded-lg shadow-md max-w-lg w-full md:w-[32rem]"
+          class="rounded-lg shadow-md"
           loading="lazy"
         />
       </div>
