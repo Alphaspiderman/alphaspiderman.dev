@@ -1,0 +1,15 @@
+---
+import Hero from "@/components/Hero.astro";
+import Layout from "../layouts/Layout.astro";
+import ProjectsComponent from "@/components/Projects.astro";
+---
+
+<Layout>
+  <Hero>
+    <p class="text-center max-w-xl mb-6 text-gray-700 dark:text-gray-300 z-10">
+      Just take a look at some of my notable projects below.
+    </p>
+  </Hero>
+  <!-- <h1 class="text-3xl font-bold mb-4 text-black dark:text-white">Projects</h1> -->
+  <ProjectsComponent />
+</Layout>

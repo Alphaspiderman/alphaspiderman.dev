@@ -1,4 +1,5 @@
 ---
+import Stats from "@/components/Stats.astro";
 import Layout from "../layouts/Layout.astro";
 import Hero from "@/components/Hero.astro";
 ---
@@ -27,31 +28,6 @@ import Hero from "@/components/Hero.astro";
         - Tim Berners-Lee
       </span>
     </blockquote>
-    <div class="flex flex-col items-center justify-center gap-8 z-10 w-full">
-      <div
-        class="flex flex-col md:flex-row items-center justify-center gap-8 w-[80%] max-w-4xl"
-      >
-        <img
-          width="46.45%"
-          src="https://stats.alphaspiderman.dev/github/stats?show_icons=true&theme=dark&hide_border=true&hide=stars"
-          alt="GitHub Stats"
-          class="rounded-lg shadow-md"
-          loading="lazy"
-        />
-        <img
-          width="52.55%"
-          src="https://stats.alphaspiderman.dev/github/streak?theme=dark&hide_border=true"
-          alt="GitHub Streak Stats"
-          class="rounded-lg shadow-md"
-          loading="lazy"
-        />
-      </div>
-      <img
-        src="https://github-readme-stats.vercel.app/api/top-langs/?username=Alphaspiderman&theme=dark&show_icons=true&hide_border=true&layout=donut&langs_count=10&size_weight=0.2&count_weight=0.8"
-        alt="Top Languages"
-        class="rounded-lg shadow-md max-w-lg w-full md:w-[24rem] mt-8"
-        loading="lazy"
-      />
-    </div>
+    <Stats />
   </main>
 </Layout>
