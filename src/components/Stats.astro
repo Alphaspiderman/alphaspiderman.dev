@@ -1,5 +1,5 @@
 ---
-
+import { Skeleton } from "@/components/ui/skeleton";
 ---
 
 <section class="relative flex flex-col items-center w-full">
@@ -10,26 +10,69 @@
     <div
       class="flex flex-col md:flex-row items-center justify-center gap-8 w-[80%] max-w-4xl"
     >
-      <img
-        width="46.45%"
-        src="https://stats.alphaspiderman.dev/github/stats?show_icons=true&theme=dark&hide_border=true&hide=stars"
-        alt="GitHub Stats"
-        class="rounded-lg shadow-md"
-        loading="lazy"
-      />
-      <img
-        width="52.55%"
-        src="https://stats.alphaspiderman.dev/github/streak?theme=dark&hide_border=true"
-        alt="GitHub Streak Stats"
-        class="rounded-lg shadow-md"
-        loading="lazy"
-      />
+      <div style="flex-basis:46.45%" class="w-full">
+        <Skeleton id="sk-stats1" className="w-full h-40 md:h-48 rounded-lg" />
+        <img
+          data-img
+          data-id="stats1"
+          width="100%"
+          src="https://stats.alphaspiderman.dev/github/stats?show_icons=true&theme=dark&hide_border=true&hide=stars"
+          alt="GitHub Stats"
+          class="rounded-lg shadow-md block w-full opacity-0 transition-opacity duration-300"
+          loading="lazy"
+        />
+      </div>
+      <div style="flex-basis:52.55%" class="w-full">
+        <Skeleton id="sk-streak" className="w-full h-40 md:h-48 rounded-lg" />
+        <img
+          data-img
+          data-id="streak"
+          width="100%"
+          src="https://stats.alphaspiderman.dev/github/streak?theme=dark&hide_border=true"
+          alt="GitHub Streak Stats"
+          class="rounded-lg shadow-md block w-full opacity-0 transition-opacity duration-300"
+          loading="lazy"
+        />
+      </div>
     </div>
-    <img
-      src="https://github-readme-stats.vercel.app/api/top-langs/?username=Alphaspiderman&theme=dark&show_icons=true&hide_border=true&layout=donut&langs_count=10&size_weight=0.2&count_weight=0.8"
-      alt="Top Languages"
-      class="rounded-lg shadow-md max-w-lg w-full md:w-[24rem] mt-8"
-      loading="lazy"
-    />
+    <div class="w-full flex justify-center">
+      <div>
+        <Skeleton
+          id="sk-langs"
+          className="rounded-lg shadow-md max-w-lg w-full md:w-[24rem] mt-8 h-40 md:h-44"
+        />
+        <img
+          data-img
+          data-id="langs"
+          src="https://github-readme-stats.vercel.app/api/top-langs/?username=Alphaspiderman&theme=dark&show_icons=true&hide_border=true&layout=donut&langs_count=10&size_weight=0.2&count_weight=0.8"
+          alt="Top Languages"
+          class="rounded-lg shadow-md max-w-lg w-full md:w-[24rem] mt-8 opacity-0 transition-opacity duration-300"
+          loading="lazy"
+        />
+      </div>
+    </div>
   </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll("img[data-img]").forEach(function (el) {
+        var img = /** @type {HTMLImageElement} */ (el);
+        if (!(img instanceof HTMLImageElement)) return;
+        var id = img.dataset.id;
+        var sk = document.getElementById("sk-" + id);
+        if (img.complete && img.naturalWidth !== 0) {
+          img.classList.remove("opacity-0");
+          if (sk) sk.style.display = "none";
+        } else {
+          img.addEventListener("load", function () {
+            img.classList.remove("opacity-0");
+            if (sk) sk.style.display = "none";
+          });
+          img.addEventListener("error", function () {
+            if (sk) sk.classList.add("opacity-50");
+          });
+        }
+      });
+    });
+  </script>
 </section>
