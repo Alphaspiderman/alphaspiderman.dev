@@ -23,7 +23,7 @@ import {
 
 import { useClickOutside } from "@/hooks/useClickOutside";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/shadcn/lib/utils";
+import { cn } from "@/lib/utils";
 
 type ExpandableCardContextType = {
     isOpen: boolean;
