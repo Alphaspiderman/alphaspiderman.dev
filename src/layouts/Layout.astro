@@ -20,7 +20,10 @@ import BackgroundImage from "../components/BackgroundImage.astro";
     <div
       style="position: fixed; inset: 0; z-index: 0; width: 100vw; height: 100vh; pointer-events: none;"
     >
-      <BackgroundImage bg="/assets/bg-light.webp" bgDark="/assets/bg-dark.webp" />
+      <BackgroundImage
+        bg="/assets/bg-light.webp"
+        bgDark="/assets/bg-dark.webp"
+      />
     </div>
     <div style="position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 50;">
       <ModeToggle client:load />
