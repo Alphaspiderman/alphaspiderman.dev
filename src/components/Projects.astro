@@ -1,14 +1,7 @@
 ---
-import {
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-const projects = [
+import ProjectsClient from "@/components/ProjectsClient";
+import type { Project } from "@/lib/types";
+const projects: Project[] = [
   {
     name: "MAHE Open House 2025",
     year: "2025",
@@ -119,51 +112,13 @@ const projects = [
 ---
 
 <section class="max-w-3xl mx-auto mb-12">
-  <h2 class="text-2xl font-semibold mb-6 text-gray-800 dark:text-gray-100">
+  <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-100">
     Projects
   </h2>
+  <p class="max-w-xl mb-6 text-gray-900 dark:text-gray-100 z-10">
+    Click on any project to see more details.
+  </p>
   <div class="space-y-8">
-    {
-      projects.map((project) => (
-        <Card className="dark:bg-gray/10 rounded-lg p-6 bg-white/10 backdrop-blur-md border-0 shadow-lg">
-          <CardHeader className="flex justify-between items-center mb-2">
-            <CardTitle className="text-lg font-bold text-blue-300">
-              {project.name}
-            </CardTitle>
-            <span class="text-gray-500 dark:text-gray-400 text-sm">
-              {project.year}
-            </span>
-          </CardHeader>
-          <CardContent>
-            <CardDescription className="text-white mb-2">
-              {project.description}
-            </CardDescription>
-            <div class="flex flex-wrap gap-2 mb-2">
-              {project.tech &&
-                project.tech.map((tech) => (
-                  <span class="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 px-2 py-0.5 rounded text-xs font-medium">
-                    {tech}
-                  </span>
-                ))}
-            </div>
-          </CardContent>
-          <CardFooter className="flex flex-wrap gap-4 mt-2">
-            {project.links &&
-              project.links.map((link) => (
-                <CardAction>
-                  <a
-                    href={link.url}
-                    class="text-blue-700 dark:text-blue-300 hover:underline text-sm bg-blue-50 dark:bg-blue-900/40 px-2 py-1 rounded"
-                    target="_blank"
-                    rel="noopener"
-                  >
-                    {link.label}
-                  </a>
-                </CardAction>
-              ))}
-          </CardFooter>
-        </Card>
-      ))
-    }
+    <ProjectsClient client:idle projects={projects} />
   </div>
 </section>
