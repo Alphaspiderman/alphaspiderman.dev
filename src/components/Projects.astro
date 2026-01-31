@@ -7,6 +7,8 @@ const projects: Project[] = [
     year: "2025",
     description:
       "Project for the MAHE Open House 2025 event, providing information and resources.",
+    extended:
+      "Built on a tight pre-event timeline as a Progressive Web App for MAHE-BLR's Open House, this project was designed to give visitors an app-like experience without requiring an app store install. The final product focused on mobile-first navigation, offline support, checklist-style event tracking, and QR-based access across campus so parents and prospective students could quickly explore schedules and student-led activities in real time.",
     tech: ["Astro", "Tailwind CSS", "TypeScript"],
     links: [
       {
@@ -24,6 +26,8 @@ const projects: Project[] = [
     year: "2025",
     description:
       "A browser extension to easily extract & share Coursera assignment links.",
+    extended:
+      "This extension was built to solve a very specific student pain point: peer-graded Coursera assignments often miss college deadlines because review links are buried or unavailable in the UI. It extracts the peer review share link directly from the submissions flow in one click, making it easy to send to classmates for faster reviews. The project was also a first hands-on dive into browser extension development, covering browser APIs, background scripts, content scripts, and packaging through the WXT framework before release on the Chrome Web Store.",
     tech: ["JavaScript", "Chrome Extension", "Manifest V3"],
     links: [
       {
@@ -41,6 +45,8 @@ const projects: Project[] = [
     year: "2024-25",
     description:
       "Portal and API for managing and exporting accreditation data for colleges.",
+    extended:
+      "Developed as one of the flagship efforts of the newly formed AppDev Cell at MIT-BLR, this system was envisioned as a full end-to-end platform for institutions preparing accreditation data for bodies such as NAAC and NBA. The backend and infrastructure work centered on planning API lifecycles, modeling a large PostgreSQL schema with more than 50 tables and 300+ columns, and setting up a Docker-based deployment workflow with reverse proxy configuration and server-side CI/CD. It was a high-impact internal product with real stakeholders, and the architecture was intentionally designed so future student teams could continue expanding it.",
     tech: ["Next.js", "Python", "PostgreSQL"],
     links: [
       {
@@ -54,6 +60,8 @@ const projects: Project[] = [
     name: "Laundry Tracker",
     year: "2024",
     description: "A simple app to track laundry status and history.",
+    extended:
+      "Laundry Tracker is a small but practical mobile app built to make everyday wardrobe management less chaotic. Clothes can be organized by laundry state, such as ready to wear, waiting to be washed, or currently in the wash, with image-backed entries for quick visual identification. The project also explored incremental data-model design, growing from a single-table schema into a more structured setup with categories and support for miscellaneous clothing items.",
     tech: ["Flutter", "SQLite"],
     links: [
       {
@@ -67,6 +75,8 @@ const projects: Project[] = [
     year: "2023",
     description:
       "Platform for NSS volunteers to log hours, apply for events, and manage data. Includes mobile app, API, and static config.",
+    extended:
+      "Originally taken forward after Team SKARR placed at the HackNXS hackathon, this six-month project aimed to centralize volunteer operations for NSS MIT-BLR. The platform combined event volunteering, contribution-hour tracking, faculty and office-bearer information, resource access, and chapter links into one mobile experience so the core committee could spend less time on repetitive clerical work. In practice it became a strong proof-of-concept for volunteer organizations, while also surfacing an important real-world constraint: sustainable hosting costs have to make sense for the stakeholders, especially when every rupee is better spent on social service itself.",
     tech: ["Flutter", "Python", "PostgreSQL", "Sanic"],
     links: [
       { label: "API", url: "https://github.com/YCN-club/nss-api" },
@@ -79,6 +89,8 @@ const projects: Project[] = [
     year: "2023-24",
     description:
       "A helpdesk portal for student support, ticketing, and knowledge base, with a backend API.",
+    extended:
+      "This was a full helpdesk solution created for TAPMI Bengaluru with real users, real stakeholders, and role-specific requirements from the start. The system was designed to support students, staff, and administrators through tailored access control, ticket workflows, dynamic categories and subcategories, assignees, SLAs, and a backend storage stack that included PostgreSQL and S3-compatible object storage. Alongside backend architecture and data modeling, the project also involved regular demos, requirement clarification, and direct stakeholder communication, making it as much a product-delivery exercise as a software engineering one even though deployment was ultimately blocked by institutional policy constraints.",
     tech: ["Next.js", "Python", "PostgreSQL", "MinIO (S3)"],
     links: [
       { label: "Website", url: "https://github.com/YCN-club/helpdesk-website" },
@@ -90,6 +102,8 @@ const projects: Project[] = [
     year: "2022-23",
     description:
       "Website templates for student clubs and communities, supporting various tiers and Notion blog integration.",
+    extended:
+      "This project grew out of the mitblr.club ecosystem as a way to help student clubs build an online presence without needing their own dedicated web team. The templates were built around a highly configurable single-file setup, optional Notion-powered blogs and events, and a no-code leaning workflow that even included a config generator to reduce malformed setup during onboarding. Hosted and maintained centrally on Vercel, the offering scaled quickly across campus, with most clubs and chapters opting in, and became the most successful publicly adopted part of the larger ecosystem before the institute later moved toward a third-party replacement.",
     tech: ["Next.js", "React", "Notion API", "Tailwind CSS"],
     links: [
       { label: "Tier 1", url: "https://github.com/YCN-club/redirect" },
@@ -102,6 +116,8 @@ const projects: Project[] = [
     year: "2022-24",
     description:
       "Centralized platform for college events, notices, and logistics. Includes mobile apps and backend API for students to access and register for activities.",
+    extended:
+      "Noticeboard and Logistics formed the original core of mitblr.club: a student-built attempt to bring structure to the chaos of club announcements, repeated email chains, and scattered registration links on campus. The idea was to give communities a centralized way to publish notices and let students discover events or register with minimal friction through dedicated mobile apps backed by a shared API. Beyond the Flutter implementation itself, the project represented years of learning in architecture, frontend-backend communication, branding, and project management, and even though the proposal was eventually replaced by a third-party solution, it remains one of the most formative and ambitious long-term efforts behind the broader YCN.club archive.",
     tech: ["Flutter", "Python", "MongoDB", "Sanic"],
     links: [
       { label: "Mobile Apps", url: "https://github.com/YCN-club/noticeboard" },
