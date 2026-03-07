@@ -1,0 +1,22 @@
+---
+import { Button } from "@/components/ui/button";
+import ProjectsClient from "@/components/ProjectsClient";
+import { projectData } from "@/components/Projects.astro";
+---
+
+<section class="max-w-3xl mx-auto mb-12">
+  <h2 class="text-2xl font-semibold text-gray-800 dark:text-gray-100">
+    Some Projects of Mine
+  </h2>
+  <div>
+    <p class="max-w-xl mb-6 text-gray-900 dark:text-gray-100 z-10">
+      Click on any project to see more details.
+    </p>
+    <ProjectsClient client:idle projects={projectData.slice(0, 2)} />
+    <div class="flex justify-center py-2">
+      <Button variant="outline" size="lg" className="rounded-full">
+        <a href="/projects" aria-label="View my projects">View More</a>
+      </Button>
+    </div>
+  </div>
+</section>

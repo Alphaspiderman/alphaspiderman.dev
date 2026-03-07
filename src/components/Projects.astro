@@ -1,7 +1,7 @@
 ---
 import ProjectsClient from "@/components/ProjectsClient";
 import type { Project } from "@/lib/types";
-const projects: Project[] = [
+export const projectData: Project[] = [
   {
     name: "MAHE Open House 2025",
     year: "2025",
@@ -135,6 +135,6 @@ const projects: Project[] = [
     Click on any project to see more details.
   </p>
   <div class="space-y-8">
-    <ProjectsClient client:idle projects={projects} />
+    <ProjectsClient client:idle projects={projectData} />
   </div>
 </section>
