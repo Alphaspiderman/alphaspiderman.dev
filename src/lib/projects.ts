@@ -6,8 +6,14 @@ export const projectData: Project[] = [
     year: "2025",
     description:
       "Project for the MAHE Open House 2025 event, providing information and resources.",
-    extended:
-      "Built on a tight pre-event timeline as a Progressive Web App for MAHE-BLR's Open House, this project was designed to give visitors an app-like experience without requiring an app store install. The final product focused on mobile-first navigation, offline support, checklist-style event tracking, and QR-based access across campus so parents and prospective students could quickly explore schedules and student-led activities in real time.",
+    extended: `Built on a tight pre-event timeline as a Progressive Web App for MAHE-BLR's Open House. The goal was to give visitors an app-like experience without requiring an app-store install.
+
+  Key highlights:
+  - Mobile-first navigation and responsive layouts
+  - Offline support and caching (PWA service worker)
+  - Checklist-style event tracking and QR-based access across campus
+
+  **Role:** Lead developer — handled PWA setup, offline caching, and mobile UX optimizations.`,
     tech: ["Astro", "Tailwind CSS", "TypeScript"],
     links: [
       {
@@ -25,8 +31,13 @@ export const projectData: Project[] = [
     year: "2025",
     description:
       "A browser extension to easily extract & share Coursera assignment links.",
-    extended:
-      "This extension was built to solve a very specific student pain point: peer-graded Coursera assignments often miss college deadlines because review links are buried or unavailable in the UI. It extracts the peer review share link directly from the submissions flow in one click, making it easy to send to classmates for faster reviews. The project was also a first hands-on dive into browser extension development, covering browser APIs, background scripts, content scripts, and packaging through the WXT framework before release on the Chrome Web Store.",
+    extended: `This extension addresses a common student pain point: peer-reviewed Coursera assignments often miss internal deadlines because review links are hard to find.
+
+  What it does:
+  - Extracts the peer review share link from the submissions flow in one click
+  - Copies the link to clipboard or opens a share dialog
+
+  **Technical notes:** implemented as a Manifest V3 extension using content scripts and background messaging.`,
     tech: ["JavaScript", "Chrome Extension", "Manifest V3"],
     links: [
       {
@@ -44,8 +55,14 @@ export const projectData: Project[] = [
     year: "2024-25",
     description:
       "Portal and API for managing and exporting accreditation data for colleges.",
-    extended:
-      "Developed as one of the flagship efforts of the newly formed AppDev Cell at MIT-BLR, this system was envisioned as a full end-to-end platform for institutions preparing accreditation data for bodies such as NAAC and NBA. The backend and infrastructure work centered on planning API lifecycles, modeling a large PostgreSQL schema with more than 50 tables and 300+ columns, and setting up a Docker-based deployment workflow with reverse proxy configuration and server-side CI/CD. It was a high-impact internal product with real stakeholders, and the architecture was intentionally designed so future student teams could continue expanding it.",
+    extended: `Developed as a flagship effort for the AppDev Cell at MIT-BLR: a full end-to-end platform to prepare accreditation submissions for bodies such as NAAC and NBA.
+
+  Highlights:
+  - Large normalized PostgreSQL schema (50+ tables)
+  - API lifecycle planning and versioning
+  - Docker-based deployment with reverse proxy and CI/CD
+
+  **Impact:** Designed so future student teams could extend and maintain the platform with minimal friction.`,
     tech: ["Next.js", "Python", "PostgreSQL"],
     links: [
       {
@@ -59,8 +76,14 @@ export const projectData: Project[] = [
     name: "Laundry Tracker",
     year: "2024",
     description: "A simple app to track laundry status and history.",
-    extended:
-      "Laundry Tracker is a small but practical mobile app built to make everyday wardrobe management less chaotic. Clothes can be organized by laundry state, such as ready to wear, waiting to be washed, or currently in the wash, with image-backed entries for quick visual identification. The project also explored incremental data-model design, growing from a single-table schema into a more structured setup with categories and support for miscellaneous clothing items.",
+    extended: `Laundry Tracker is a small mobile app to simplify wardrobe management.
+
+  Features:
+  - Organize items by state: Ready to wear, Waiting to be washed, In wash
+  - Image-backed entries for quick visual identification
+  - Incremental data-model design that evolved from a single table to categorized records
+
+  **Note:** focused on a minimal, offline-first UX for quick daily use.`,
     tech: ["Flutter", "SQLite"],
     links: [
       {
