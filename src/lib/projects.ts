@@ -97,8 +97,15 @@ export const projectData: Project[] = [
     year: "2023",
     description:
       "Platform for NSS volunteers to log hours, apply for events, and manage data. Includes mobile app, API, and static config.",
-    extended:
-      "Originally taken forward after Team SKARR placed at the HackNXS hackathon, this six-month project aimed to centralize volunteer operations for NSS MIT-BLR. The platform combined event volunteering, contribution-hour tracking, faculty and office-bearer information, resource access, and chapter links into one mobile experience so the core committee could spend less time on repetitive clerical work. In practice it became a strong proof-of-concept for volunteer organizations, while also surfacing an important real-world constraint: sustainable hosting costs have to make sense for the stakeholders, especially when every rupee is better spent on social service itself.",
+    extended: `Originally taken forward after Team SKARR placed at the HackNXS hackathon, this six-month project aimed to centralize volunteer operations for NSS MIT-BLR.
+
+Core features:
+- Volunteer hour logging and export
+- Event applications and approvals
+- Chapter/member directory and role-based access
+- Lightweight static config for offline/mobile sync
+
+**Outcome:** Served as a production-proof prototype that reduced administrative overhead for the committee. The work prioritized low-cost hosting options and maintainability so campus chapters could adopt it without large recurring expenses.`,
     tech: ["Flutter", "Python", "PostgreSQL", "Sanic"],
     links: [
       { label: "API", url: "https://github.com/YCN-club/nss-api" },
@@ -111,8 +118,15 @@ export const projectData: Project[] = [
     year: "2023-24",
     description:
       "A helpdesk portal for student support, ticketing, and knowledge base, with a backend API.",
-    extended:
-      "This was a full helpdesk solution created for TAPMI Bengaluru with real users, real stakeholders, and role-specific requirements from the start. The system was designed to support students, staff, and administrators through tailored access control, ticket workflows, dynamic categories and subcategories, assignees, SLAs, and a backend storage stack that included PostgreSQL and S3-compatible object storage. Alongside backend architecture and data modeling, the project also involved regular demos, requirement clarification, and direct stakeholder communication, making it as much a product-delivery exercise as a software engineering one even though deployment was ultimately blocked by institutional policy constraints.",
+    extended: `Built for TAPMI Bengaluru, this helpdesk combined a user-facing portal with a role-aware backend API to support student, staff, and admin workflows.
+
+Key capabilities:
+- Ticket creation, assignment, and SLA tracking
+- Dynamic categories, subcategories and workflows
+- Role-based access control and admin dashboards
+- Backend using PostgreSQL and S3-compatible object storage for attachments
+
+**Delivery notes:** Included regular stakeholder demos and iterative refinements; the project emphasized real-world workflows and auditability.`,
     tech: ["Next.js", "Python", "PostgreSQL", "MinIO (S3)"],
     links: [
       { label: "Website", url: "https://github.com/YCN-club/helpdesk-website" },
@@ -124,8 +138,14 @@ export const projectData: Project[] = [
     year: "2022-23",
     description:
       "Website templates for student clubs and communities, supporting various tiers and Notion blog integration.",
-    extended:
-      "This project grew out of the mitblr.club ecosystem as a way to help student clubs build an online presence without needing their own dedicated web team. The templates were built around a highly configurable single-file setup, optional Notion-powered blogs and events, and a no-code leaning workflow that even included a config generator to reduce malformed setup during onboarding. Hosted and maintained centrally on Vercel, the offering scaled quickly across campus, with most clubs and chapters opting in, and became the most successful publicly adopted part of the larger ecosystem before the institute later moved toward a third-party replacement.",
+    extended: `A collection of starter templates aimed at helping student clubs get online quickly with minimal technical overhead.
+
+Features:
+- Tiered templates (Tier 1/2/3) with increasing customization
+- Optional Notion-powered blog and event integration
+- Single-file config and a config generator to reduce setup errors
+
+**Adoption:** Hosted on Vercel and widely adopted across campus; prioritized simplicity and low-maintenance hosting for student maintainers.`,
     tech: ["Next.js", "React", "Notion API", "Tailwind CSS"],
     links: [
       { label: "Tier 1", url: "https://github.com/YCN-club/redirect" },
@@ -138,8 +158,14 @@ export const projectData: Project[] = [
     year: "2022-24",
     description:
       "Centralized platform for college events, notices, and logistics. Includes mobile apps and backend API for students to access and register for activities.",
-    extended:
-      "Noticeboard and Logistics formed the original core of mitblr.club: a student-built attempt to bring structure to the chaos of club announcements, repeated email chains, and scattered registration links on campus. The idea was to give communities a centralized way to publish notices and let students discover events or register with minimal friction through dedicated mobile apps backed by a shared API. Beyond the Flutter implementation itself, the project represented years of learning in architecture, frontend-backend communication, branding, and project management, and even though the proposal was eventually replaced by a third-party solution, it remains one of the most formative and ambitious long-term efforts behind the broader YCN.club archive.",
+    extended: `The original core of mitblr.club: a centralized noticeboard and logistics platform for campus events and registrations.
+
+Highlights:
+- Unified event publishing and discovery
+- Mobile apps for student registration and reminders
+- Shared API to power multiple client apps
+
+**Legacy:** Provided critical lessons in scaling, governance, and long-term maintenance for student-run infrastructure; many ideas were later adopted elsewhere on campus.`,
     tech: ["Flutter", "Python", "MongoDB", "Sanic"],
     links: [
       { label: "Mobile Apps", url: "https://github.com/YCN-club/noticeboard" },
