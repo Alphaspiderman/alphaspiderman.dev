@@ -165,9 +165,7 @@ export default function ProjectsClient({ projects }: { projects: Project[] }) {
               <div className="prose max-w-none gap-y-4">
                 {renderExtended(project.extended)}
               </div>
-            </ExpandableCardDescription>
-            {project.links && project.links.length > 0 && (
-              <ExpandableCardContent className="bg-card text-card-foreground p-4">
+              {project.links && project.links.length > 0 && (
                 <div className="flex flex-wrap gap-2">
                   Links:
                   <div className="flex flex-wrap gap-2 items-center">
@@ -185,8 +183,8 @@ export default function ProjectsClient({ projects }: { projects: Project[] }) {
                     ))}
                   </div>
                 </div>
-              </ExpandableCardContent>
-            )}
+              )}
+            </ExpandableCardDescription>
           </ExpandableCardExpandContainer>
         </ExpandableCard>
       ))}
