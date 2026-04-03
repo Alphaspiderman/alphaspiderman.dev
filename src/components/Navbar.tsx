@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Home, Mail, User, FolderOpen, Menu, X } from "lucide-react";
+import { ModeToggle } from "@/components/ModeToggle";
 
 interface NavLink {
   href: string;
@@ -22,20 +23,26 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-2">
-            {navLinks.map((link) => {
-              const IconComponent = link.icon;
-              return (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="flex items-center gap-2 px-4 py-2 rounded-lg text-gray-900 dark:text-gray-100 hover:bg-white/20 dark:hover:bg-gray-800/30 transition-colors duration-200 font-medium"
-                >
-                  <IconComponent size={20} />
-                  <span>{link.label}</span>
-                </a>
-              );
-            })}
+          <div className="hidden md:flex items-center justify-between w-full">
+            <div className="flex items-center space-x-2">
+              {navLinks.map((link) => {
+                const IconComponent = link.icon;
+                return (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    className="flex items-center gap-2 px-4 py-2 rounded-lg text-gray-900 dark:text-gray-100 hover:bg-white/20 dark:hover:bg-gray-800/30 transition-colors duration-200 font-medium"
+                  >
+                    <IconComponent size={20} />
+                    <span>{link.label}</span>
+                  </a>
+                );
+              })}
+            </div>
+
+            <div className="hidden md:flex items-center ml-4">
+              <ModeToggle />
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -67,6 +74,9 @@ export default function Navbar() {
                 </a>
               );
             })}
+            <div className="px-4">
+              <ModeToggle />
+            </div>
           </div>
         )}
       </div>
