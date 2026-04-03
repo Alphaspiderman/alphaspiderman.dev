@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import Footer from "@/components/Footer.astro";
 import { ModeToggle } from "@/components/ModeToggle";
+import Navbar from "@/components/Navbar";
 import BackgroundImage from "../components/BackgroundImage.astro";
 ---
 
@@ -25,10 +26,11 @@ import BackgroundImage from "../components/BackgroundImage.astro";
         bgDark="/assets/bg-dark.webp"
       />
     </div>
+    <Navbar client:load />
     <div style="position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 50;">
       <ModeToggle client:load />
     </div>
-    <main style="position: relative; z-index: 1;">
+    <main style="position: relative; z-index: 1; padding-top: 4rem;">
       <slot />
       <Footer />
     </main>
